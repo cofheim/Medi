@@ -32,8 +32,10 @@
 
             if (string.IsNullOrEmpty(name) || name.Length > MAX_NAME_LENGTH)
                 error = $"Name cannot be empty or longer than {MAX_NAME_LENGTH} symbols";            
-            if (string.IsNullOrEmpty(description) || name.Length > MAX_DESCRIPTION_LENGTH)
+            if (string.IsNullOrEmpty(description) || description.Length > MAX_DESCRIPTION_LENGTH)
                 error = $"Description cannot be empty or longer than {MAX_DESCRIPTION_LENGTH} symbols";
+            if (startDate > endDate || endDate < startDate)
+                error = "Start Date cannot be later than End Date or End Date cannot be earlier than Start Date";
 
             var medicine = new Medicine(id, name, description, startDate, endDate);
 

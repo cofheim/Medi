@@ -23,12 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Medi.Application\Medi.Application.csproj" />
     <ProjectReference Include="..\Medi.Core\Medi.Core.csproj" />
     <ProjectReference Include="..\Medi.DataAccess\Medi.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

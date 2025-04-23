@@ -1,4 +1,6 @@
+using Medi.Application.Services;
 using Medi.DataAccess;
+using Medi.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<MediDbContext>(options =>
 { 
     options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(MediDbContext))); 
 });
+
+builder.Services.AddScoped<IMedicineService, MedicineService>();
+builder.Services.AddScoped<IMedicinesRepository, MedicinesRepository>();
 
 var app = builder.Build();
 
