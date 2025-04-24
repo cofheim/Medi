@@ -21,7 +21,7 @@ namespace Medi.API.Controllers
         {
             var medicines = await _medicineService.GetAllMedicines();
 
-            var response = medicines.Select(m => new MedicineResponse(m.Id, m.Name, m.Description, m.StartDate, m.EndDate));
+            var response = medicines.Select(m => new MedicineResponse(m.Id, m.Name, m.Description, m.Form, m.Frequency, m.Status, m.StartDate, m.EndDate));
 
             return Ok(response);
         }
@@ -29,7 +29,7 @@ namespace Medi.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> CreateMedicine([FromBody] MedicineRequest request)
         {
-            var (medicine, error) = Medicine.Create(Guid.NewGuid(), request.name, request.description, request.startDate, request.endDate);
+            var (medicine, error) = Medicine.Create(Guid.NewGuid(), request.name, request.description, request.form, request.frequency, request.status, request.startDate, request.endDate);
 
             if (!string.IsNullOrEmpty(error))
             {
@@ -44,7 +44,7 @@ namespace Medi.API.Controllers
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<Guid>> UpdateMedicine(Guid id, [FromBody] MedicineRequest request)
         {
-            var medicineId = await _medicineService.UpdateMedicine(id, request.name, request.description, request.startDate, request.endDate);
+            var medicineId = await _medicineService.UpdateMedicine(id, request.name, request.description, request.form, request.frequency, request.status, request.startDate, request.endDate);
 
             return Ok(medicineId);
         }

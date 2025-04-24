@@ -21,9 +21,9 @@ namespace Medi.Application.Services
             return await _medicinesRepository.Create(medicine);
         }
 
-        public async Task<Guid> UpdateMedicine(Guid id, string name, string description, DateTime startDate, DateTime endDate)
+        public async Task<Guid> UpdateMedicine(Guid id, string name, string description, MedicineForm form, IntakeFrequency frequency, Status status, DateTime startDate, DateTime endDate)
         {
-            return await _medicinesRepository.Update(id, name, description, startDate, endDate);
+            return await _medicinesRepository.Update(id, name, description, form, frequency, status, startDate, endDate);
         }
 
         public async Task<Guid> DeleteMedicine(Guid id)

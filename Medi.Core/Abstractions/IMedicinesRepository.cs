@@ -7,6 +7,6 @@ namespace Medi.DataAccess.Repositories
         Task<Guid> Create(Medicine medicine);
         Task<Guid> Delete(Guid id);
         Task<List<Medicine>> Get();
-        Task<Guid> Update(Guid id, string name, string description, DateTime startDate, DateTime endDate);
+        Task<Guid> Update(Guid id, string name, string description, MedicineForm form, IntakeFrequency frequency, Status status, DateTime startDate, DateTime endDate);
     }
 }
