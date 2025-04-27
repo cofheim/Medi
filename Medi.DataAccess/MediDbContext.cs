@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Medi.DataAccess.Entities;
+﻿using Medi.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
+using Medi.Core.Models;
 
 namespace Medi.DataAccess
 {
@@ -15,6 +11,14 @@ namespace Medi.DataAccess
 
         }
         public DbSet<MedicineEntity> Medicines { get; set; }
+        public DbSet<CourseEntity> Courses { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MedicineEntity>()
+                .HasMany(m => m.Courses)
+                .WithOne(m => m.Medicine)
+                .HasForeignKey(c => c.MedicineId);
+        }
 
     }
 }

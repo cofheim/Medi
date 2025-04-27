@@ -19,10 +19,6 @@ namespace Medi.DataAccess.Config
             builder.Property(m => m.Name).IsRequired().HasMaxLength(50);
             builder.Property(m => m.Description).IsRequired().HasMaxLength(250);
             builder.Property(m => m.Form).IsRequired().HasConversion<string>();
-            builder.Property(m => m.Frequency).IsRequired().HasConversion<string>();
-            builder.Property(m => m.Status).IsRequired().HasConversion<string>();
-            builder.Property(m => m.StartDate).IsRequired();
-            builder.Property(m => m.EndDate).IsRequired();
         }
     }
 }

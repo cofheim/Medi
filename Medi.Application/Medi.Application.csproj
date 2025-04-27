@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Medi.Core\Medi.Core.csproj" />
+    <ProjectReference Include="..\Medi.DataAccess\Medi.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

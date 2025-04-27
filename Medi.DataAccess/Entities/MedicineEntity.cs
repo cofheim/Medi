@@ -13,9 +13,6 @@ namespace Medi.DataAccess.Entities
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public MedicineForm Form { get; set; } = MedicineForm.Other;
-        public IntakeFrequency Frequency { get; set; } = IntakeFrequency.Custom;
-        public Status Status { get; set; } = Status.Planned;
-        public DateTime StartDate { get; set; } = DateTime.UtcNow;
-        public DateTime EndDate { get; set; }
+        public List<CourseEntity> Courses { get; set; } = new List<CourseEntity>();
     }
 }

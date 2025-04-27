@@ -29,6 +29,10 @@ builder.Services.AddDbContext<MediDbContext>(options =>
 builder.Services.AddScoped<IMedicineService, MedicineService>();
 builder.Services.AddScoped<IMedicinesRepository, MedicinesRepository>();
 
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
