@@ -46,8 +46,22 @@ namespace Medi.DataAccess.Repositories
 
         public async Task<List<Course>> Get()
         {
-            var courseEntities = await _context.Courses.AsNoTracking().ToListAsync();
-            var courses = courseEntities.Select(m => Course.Create(m.Id, m.Name, m.Description, m.MedicineId, m.Dosage, m.Amount, m.Frequency, m.Status, m.StartDate, m.EndDate).Course).ToList();
+            var courseEntities = await _context.Courses
+                .Include(c => c.Medicine)
+                .AsNoTracking()
+                .ToListAsync();
+
+            var courses = courseEntities.Select(m => Course.Create(
+                m.Id,
+                m.Name,
+                m.Description,
+                m.MedicineId,
+                m.Dosage,
+                m.Amount,
+                m.Frequency,
+                m.Status,
+                m.StartDate,
+                m.EndDate).Course).ToList();
 
             return courses;
         }

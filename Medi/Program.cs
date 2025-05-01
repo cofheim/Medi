@@ -33,6 +33,8 @@ builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 
 
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -11,21 +11,27 @@ namespace Medi.API.Controllers
     public class CourseController : ControllerBase
     {
         private readonly ICourseService _courseService;
-        public CourseController(ICourseService coursesService)
+        private readonly IMedicineService _medicineService;
+        public CourseController(ICourseService coursesService, IMedicineService medicineService)
         {
             _courseService = coursesService;
+            _medicineService = medicineService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<CourseResponse>>> GetCourses()
         {
             var courses = await _courseService.GetAllCourses();
+            var medicines = await _medicineService.GetAllMedicines();
+
+            var medicineNames = medicines.ToDictionary(m => m.Id, m => m.Name);
 
             var response = courses.Select(m => new CourseResponse(
                 m.Id, 
                 m.Name, 
                 m.Description, 
-                m.MedicineId, 
+                m.MedicineId,
+                medicineNames.TryGetValue(m.MedicineId, out var medicineName) ? medicineName : "Unknown",
                 m.Dosage, 
                 m.Amount, 
                 m.Frequency, 

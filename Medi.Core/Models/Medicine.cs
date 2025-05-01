@@ -1,5 +1,8 @@
-﻿namespace Medi.Core.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Medi.Core.Models
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum MedicineForm 
     { 
         Capsule,

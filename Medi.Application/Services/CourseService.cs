@@ -12,15 +12,19 @@ namespace Medi.Application.Services
     {
         private readonly ICourseRepository _courseRepository;
         private readonly IMedicinesRepository _medicinesRepository;
-        public CourseService(ICourseRepository coursesRepository, IMedicinesRepository medicinesRepository) 
+        private readonly IMedicineService _medicineService;
+        public CourseService(ICourseRepository coursesRepository, IMedicinesRepository medicinesRepository, IMedicineService medicineService) 
         {
             _courseRepository = coursesRepository;
             _medicinesRepository = medicinesRepository;
+            _medicineService = medicineService;
         }
 
         public async Task<List<Course>> GetAllCourses()
         {
-            return await _courseRepository.Get();
+            var courses = await _courseRepository.Get();
+            var medicines = await _medicineService.GetAllMedicines();
+            return courses;
         }
 
         public async Task<Guid> CreateCourse(Course course)
