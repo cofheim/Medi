@@ -57,6 +57,8 @@
                 error = "Dosage cannot be less than 0";
             if (amount < 0)
                 error = "Amount cannot be less than 0";
+            if (medicineId == Guid.Empty)
+                error = "Medicine must be specified";
             var course = new Course(id, name, description, medicineId, dosage, amount, frequency, status, startDate, endDate);
 
             return (course, error);
