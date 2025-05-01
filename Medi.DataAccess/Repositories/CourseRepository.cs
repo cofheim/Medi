@@ -21,6 +21,7 @@ namespace Medi.DataAccess.Repositories
                 Id = course.Id,
                 Name = course.Name,
                 Description = course.Description,
+                MedicineId = course.MedicineId,
                 Dosage = course.Dosage,
                 Amount = course.Amount,
                 StartDate = course.StartDate,

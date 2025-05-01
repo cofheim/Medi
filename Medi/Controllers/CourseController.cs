@@ -39,25 +39,31 @@ namespace Medi.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> CreateCourse([FromBody] CourseRequest request)
         {
-            var (course, error) = Course.Create(Guid.NewGuid(),
-                request.name,
-                request.description,
-                request.medicineId,
-                request.dosage,
-                request.amount,
-                request.frequency,
-                request.status,
-                request.startDate,
-                request.endDate);
-
-            if (!string.IsNullOrEmpty(error))
+            try
             {
-                return BadRequest(error);
+                var (course, error) = Course.Create(Guid.NewGuid(),
+                    request.name,
+                    request.description,
+                    request.medicineId,
+                    request.dosage,
+                    request.amount,
+                    request.frequency,
+                    request.status,
+                    request.startDate,
+                    request.endDate);
+
+                if (!string.IsNullOrEmpty(error))
+                {
+                    return BadRequest(error);
+                }
+
+                var courseId = await _courseService.CreateCourse(course);
+                return Ok(courseId);
             }
-
-            var courseId = await _courseService.CreateCourse(course);
-
-            return Ok(courseId);
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id:guid}")]

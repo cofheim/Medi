@@ -3,6 +3,7 @@ using System;
 using Medi.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Medi.DataAccess.Migrations
 {
     [DbContext(typeof(MediDbContext))]
-    partial class MediDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250501100609_AddedCourseAndMedicineCheckInCourse")]
+    partial class AddedCourseAndMedicineCheckInCourse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,9 +11,11 @@ namespace Medi.Application.Services
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
-        public CourseService(ICourseRepository coursesRepository) 
+        private readonly IMedicinesRepository _medicinesRepository;
+        public CourseService(ICourseRepository coursesRepository, IMedicinesRepository medicinesRepository) 
         {
             _courseRepository = coursesRepository;
+            _medicinesRepository = medicinesRepository;
         }
 
         public async Task<List<Course>> GetAllCourses()
@@ -23,6 +25,12 @@ namespace Medi.Application.Services
 
         public async Task<Guid> CreateCourse(Course course)
         {
+            var medicines = await _medicinesRepository.Get();
+            if (!medicines.Any(m => m.Id == course.MedicineId))
+            {
+                throw new InvalidOperationException($"Medicine with ID {course.MedicineId} does not exist");
+            }
+
             return await _courseRepository.Create(course);
         }
 
