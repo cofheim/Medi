@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Medi.DataAccess\Medi.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
 </Project>
