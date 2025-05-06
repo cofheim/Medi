@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medi.Core", "Medi.Core\Medi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medi.Application", "Medi.Application\Medi.Application.csproj", "{ADEB5C0F-22A6-4F5C-8BCD-698629A631F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{DCF29399-DDEF-47B1-AE8D-7420A2A407B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ADEB5C0F-22A6-4F5C-8BCD-698629A631F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADEB5C0F-22A6-4F5C-8BCD-698629A631F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADEB5C0F-22A6-4F5C-8BCD-698629A631F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF29399-DDEF-47B1-AE8D-7420A2A407B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF29399-DDEF-47B1-AE8D-7420A2A407B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF29399-DDEF-47B1-AE8D-7420A2A407B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF29399-DDEF-47B1-AE8D-7420A2A407B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,4 @@
+using Infrastructure;
 using Medi.Application.Services;
 using Medi.DataAccess;
 using Medi.DataAccess.Repositories;
@@ -20,6 +21,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddDbContext<MediDbContext>(options => 
 { 
@@ -31,6 +33,9 @@ builder.Services.AddScoped<IMedicinesRepository, MedicinesRepository>();
 
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
 
 

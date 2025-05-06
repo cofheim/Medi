@@ -1,7 +1,8 @@
 ﻿using Medi.Core.Models;
 using Medi.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
-using Medi.Core.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace Medi.DataAccess.Repositories
 {
@@ -22,23 +23,19 @@ namespace Medi.DataAccess.Repositories
                 Id = user.Id,
                 UserName = user.UserName,
                 PasswordHash = user.PasswordHash,
-                Email = user.Email,
-                CreatedAt = user.CreatedAt,
-                Role = user.Role,
-                Status = user.Status
+                Email = user.Email
             };
 
             await _context.Users.AddAsync(userEntity);
             await _context.SaveChangesAsync();
         }
-
         public async Task<User> GetByEmail(string email)
         {
             var userEntity = await _context.Users
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Email == email) ?? throw new Exception();
 
-            return _mapper.Map<UserEntity, User>(userEntity);
+            return _mapper.Map<User>(userEntity);
         }
     }
 }

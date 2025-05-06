@@ -13,9 +13,6 @@ namespace Medi.DataAccess.Entities
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public Roles Role { get ; set; } = Roles.Client;
-        public UserStatus Status { get; set; } = UserStatus.Active;
 
         public List<CourseEntity> Courses { get; private set; }
         public List<MedicineEntity> Medicines { get; private set; }

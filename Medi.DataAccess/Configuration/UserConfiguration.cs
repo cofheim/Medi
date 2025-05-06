@@ -19,9 +19,6 @@ namespace Medi.DataAccess.Configuration
             builder.Property(u => u.UserName).IsRequired();
             builder.Property(u => u.Email).IsRequired().HasMaxLength(100);
             builder.Property(u => u.PasswordHash).IsRequired();
-            builder.Property(u => u.CreatedAt).IsRequired().HasDefaultValue(DateTime.UtcNow);
-            builder.Property(u => u.Role).IsRequired().HasDefaultValue(Roles.Client);
-            builder.Property(u => u.Status).IsRequired().HasDefaultValue(UserStatus.Active);
         }
     }
 }
